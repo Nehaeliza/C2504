@@ -1,0 +1,24 @@
+
+28. to check nubmer is divisible by 27. Abhijith.
+   
+   pseudo: routine
+   
+   function isDivisibleBy27(num)
+   
+   if num%27==0{
+      return true
+   else {
+   return false
+   }
+   
+   
+   pseudo test
+   
+   procedure TestisDivisibleBy27()
+   input num
+   if  isDivisibleBy27(num){ 
+       print("Divisible by 27");
+	   }
+   else{
+	    print("not divisible by 27");
+   }		
