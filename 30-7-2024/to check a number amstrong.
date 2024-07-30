@@ -1,0 +1,40 @@
+2. to check a number amstrong. Collin
+
+pseudo:
+Input num
+originalNum = num
+sum = 0
+numDigits = number of digits in num
+while num > 0
+    digit = num % 10
+    sum = sum + (digit ^ numDigits)
+    num = num // 10
+if originalNum == sum
+    Print("The number is an Armstrong number")
+else
+    Print("The number is not an Armstrong number")
+
+
+pseudo: routine
+function IsArmstrong(num)
+    originalNum = num
+    sum = 0
+    numDigits = number of digits in num
+    while num > 0
+        digit = num % 10
+        sum = sum + (digit ^ numDigits)
+        num = num // 10
+    if originalNum == sum
+        return True
+    else
+        return False
+
+pseudo: test
+
+procedure TestIsArmstrong()
+    Input num
+    if IsArmstrong(num)
+        Print("The number is an Armstrong number")
+    else
+        Print("The number is not an Armstrong number")
+
