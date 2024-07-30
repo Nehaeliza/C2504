@@ -1,0 +1,26 @@
+9. swap two numbers. Minnu
+
+  input num1
+  input num2
+  temp= num1
+  num1=num2
+  num2=temp
+  print( num1,num2)
+  
+  
+  pseudo: routine
+  
+  function SwappingNumbers(num1,num2)
+  temp=num1
+  num1=num2
+  num2=temp
+  return(num1,num2)
+  
+  pseudo test:
+  
+  procedure TestSwappingNumbers()
+  Input num1
+  Input num2
+  num1,num2=SwappingNumbers(num1,num2)
+  print(num1,num2)
+  
