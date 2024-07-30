@@ -1,0 +1,23 @@
+20. to find cube of number. Sahla 
+
+Neha
+Pseudo:
+       Input num
+	   cube= num*num*num
+	   print(cube)
+	   
+Gopika
+Pseudo:routine
+       
+	   function Findcube(num)
+	   cube=num*num*num
+	   return cube
+	   
+Shilpa
+pseudo:routinetest
+
+        procedure TestFindCube()
+		Input num
+		cube= Findcube(num)
+		print cube
+	   
