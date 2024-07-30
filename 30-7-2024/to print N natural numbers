@@ -1,0 +1,16 @@
+14. to print N natural numbers. Shilpa
+ 
+     pseudo:routine
+	 
+	 function FindNaturalNumbers(n)
+	 for i=1 to n
+	 print i
+	 
+	 pseudo test:
+	 
+	 procedure TestFindNaturalNumbers()
+	 input n
+	 FindNaturalNumbers(n)
+	 
+	 
+	 
