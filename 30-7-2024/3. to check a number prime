@@ -1,0 +1,19 @@
+3. to check a number prime. Ann Maria
+
+pseudo:routine
+function IsPrime(num)
+    if num <= 1
+        return False
+    for i = 2 to sqrt(num)
+        if num % i == 0
+            return False
+    return True
+
+pseudo:test
+
+function TestIsPrime()
+input num
+if IsPrime(num){
+  Print("The number is prime")
+else
+   Print("The number is not prime")
