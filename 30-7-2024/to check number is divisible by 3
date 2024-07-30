@@ -1,0 +1,23 @@
+28. to check nubmer is divisible by 3. Ashwin.
+   
+   pseudo: routine
+   
+   function isDivisibleBy3(num)
+   
+   if num%3==0{
+      return true
+   else {
+   return false
+   }
+   
+   
+   pseudo test
+   
+   procedure TestisDivisibleBy3()
+   input num
+   if  isDivisibleBy3(num){ 
+       print("Divisible by 3");
+	   }
+   else{
+	    print("not divisible by 3");
+   }		
