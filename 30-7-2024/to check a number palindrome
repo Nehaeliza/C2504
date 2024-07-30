@@ -1,0 +1,41 @@
+1. to check a number palindrome. Sarika 
+
+
+pseudo: 
+Input num
+originalNum = num
+reversedNum = 0
+while num > 0
+    digit = num % 10
+    reversedNum = reversedNum * 10 + digit
+    num = num // 10
+if originalNum == reversedNum
+    Print("The number is a palindrome")
+else
+    Print("The number is not a palindrome")
+
+
+pseudo routine:
+ 
+ function FindPalindrome(num)
+    originalNum = num
+    reversedNum = 0
+    while num > 0
+        digit = num % 10
+        reversedNum = reversedNum * 10 + digit
+        num = num // 10
+    if originalNum == reversedNum
+        return True
+    else
+        return False
+		
+pseudo test:
+  
+  function TestFindPalindrome()
+  Input num
+  if FindPalindrome(num){
+  print("It is a palindrome")
+  }
+  else{
+  print("not a palindrome")
+  }
