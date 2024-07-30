@@ -1,0 +1,21 @@
+15. to find square of the number. Anjana E R 
+  
+  
+  pseudo:
+  
+  Input num
+  square = num*num
+  print square
+  
+  pseudo routine:
+  
+  function FindSquare(num)
+  square = num*num
+  return square
+  
+  pseudo test:
+  
+  procedure TestFindSquare()
+  Input num
+  square= FindSquare(num)
+  print(square)
