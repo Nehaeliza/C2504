@@ -1,0 +1,22 @@
+19. to find average of two numbers. Sarika 
+
+    Pseudocode:
+	Input num1
+	Input num2
+	Sum = num1+num2
+	Avg = Sum/2
+	print( Avg)
+	
+	
+    Pseudo: routine
+	function FindAverageNumber(num1,num2)
+	Sum= num1+num2
+	Avg= Sum/2
+	return Avg
+	
+	Pseudo: Test
+	procedure TestFindAverageNumber()
+	Input num1
+	Input num2
+	Avg= AverageNumber(num1,num2)
+	Print(Avg)
