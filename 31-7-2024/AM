@@ -1,0 +1,182 @@
+1. [Sharika] To print the one is adust based his/her age 
+   Note: Dont print if not adult
+    function IsAdult(age) -> boolean 
+        isAdult = (age >= 18);
+        return isAdult; 
+
+    function TestIsAdult(): -> None
+        Input age 
+        if(IsAdult(age)) 
+            print 'You are an adult.'
+        end if
+
+
+2. [Dijol] Take a num 10, if num greater than 5
+   print "num as 'greater than 5'"
+
+  function IsNumberberGreaterThan5(num) -> boolean 
+        isNumber = (num > 5);
+        return isNumber; 
+
+    function TestIsNumberberGreaterThan5(): -> None
+        Input num 
+        if(IsNumberberGreaterThan5(num)) 
+            print 'greater than 5.'
+        end if
+
+
+3. [neha] To print 'number is positive' if num > 0
+       it should not print if not positive 
+
+function IsPositive(num) -> boolean 
+        isPositive = (num > 0);
+        return isPositive; 
+
+    function TestIsPositive(): -> None
+        Input num 
+        if(IsPositivet(num)) 
+            print 'number is positive.'
+        end if
+
+
+4. [galdsy] if temp > 25, print it is hot outside.
+
+
+function IsHot(temp) -> boolean 
+        isHot = (temp > 25);
+        return isHot; 
+
+    function TestIsHot(): -> None
+        Input temp 
+        if(IsHot(temp)) 
+            print 'it is hot outside.'
+        end if
+
+
+if..else :
+----------
+[Ashna] 
+5. To print the is adult or not based his/her age. 
+function TestIsAdultNotAdult(): -> None
+        Input age 
+        if(IsAdult(age)) 
+            print 'You are an adult.'
+        else 
+            print 'You are not an adult.'
+        end if
+
+6. [Kuriakose] Input mark, if IsMarkGreaterThan40(mark) 
+    print pass else fail 
+
+  function IsMarkGreaterThan40(mark): -> boolean
+    return (mark > 40)
+
+function IsMarkGreaterThan40(mark): -> boolean
+    isMarkGreaterThan40 = (mark > 40)
+    return isMarkGreaterThan40
+
+function TestIsMarkGreaterThan40(): -> None
+    Input mark 
+    if IsMarkGreaterThan40(mark)
+        print "pass" 
+    else 
+        print "fail" 
+
+7. [Aaryaka] Input number, check it is positive or negative 
+healthcare or digital engineering service 
+
+function IsNumberPositive(num): -> boolean
+    return (num > 0)
+
+function IsNumberPositive(num): -> boolean
+    isNumberPositive = (num > 0)
+    return isNumberPositive
+
+function TestIsNumberPositive(): -> None
+    Input mark 
+    if IsNumberPositive(num)
+        print "positive" 
+    else 
+        print "negative" 
+
+8. [Ashwin] input doctorSalary/month, 
+    check if is 6 digit salary or not 
+
+function IsSalary(Salary)
+   IsSalary = (salary>>= 100000 and salary <= 999999)
+   return IsSalary
+
+function TestIsSalary()
+   input salary
+   if IsSalary(Salary)
+   print("6 digit salary")
+   else
+   print("not 6 digit salary)
+
+9. [Sahla] check tumour 
+                is cancerous if  malignant 
+                or not cancerous if benign
+            Note: tumour is string of text either malignant or benign
+To Solve: [Anjana]
+    to check tumour
+function IsCancerous(tumour->string): -> boolean
+    isCancerous = (tumour == "malignant")
+    return isCancerous
+
+10.else.if[Gayathri]  
+    To check the person adult, teenager or child 
+    for given age 
+    function IsAdult(age) -> boolean 
+        isAdult = (age >= 18);
+        return isAdult; 
+    function IsTeenager(age) -> boolean 
+        isTeenager = (age >= 13);
+        return isTeenager; 
+    function TestIsAdultTeenagerOrChild(): -> None
+        Input age 
+        if(IsAdult(age)) 
+            print 'You are an adult.'
+        else if(IsTeenager(age)) 
+            print 'You are a teenager.'
+        else
+            print 'You are a child.'
+        end if
+
+15. [Gopika] 
+    --- digital service 
+    check for car maintenance
+    cases :
+        'O' = Oil Change, "Change Oil and Replace Oil Filter"
+        'T' = Tire Rotaion, "Rotate Tire and align them properly"
+        'B' = Brake, "Inspect the brake and replace them if necessary" 
+        'A' = Battery,         "Battery Check and Replace them"
+        Default: "Some other reason"
+16. [Shilpa] 
+    function SuggestMaintenance(serviceOption->char) -> string
+        string suggestion;
+        switch serviceOption
+            case 'O':
+                suggestion = "Change Oil and Replace Oil Filter"
+                break
+            case 'T':
+                suggestion = "Rotate Tire and align them properly"
+                break
+            case 'B':
+                suggestion = "Inspect the brake and replace them if necessary"
+                break
+            case 'A':
+                suggestion = "Battery Check and Replace them"
+                break
+            default: 
+                suggestion = "Some other reason"
+                break 
+        end switch 
+        return suggestion
+    function TestSuggestMaintenance() -> None       marks: 100
+        Input serviceOption 
+        suggestion = SuggestMaintenance(serviceOption)
+        print suggestion        
+    function TestSuggestMaintenance() -> None       marks: 99
+        Input serviceOption 
+        print SuggestMaintenance(serviceOption)
+
