@@ -1,0 +1,238 @@
+
+Shopping Cart Problem
+----------------------
+		double discount = 80;
+        double discountrate = 0.10;
+//Initialize total cost to zero
+		double total cost=0
+		int[]shoppingcart= {item1,item2,item3}
+		For each item in items{
+			total cost = total cost+ item.cost
+		}
+		check if total cost> discountrange
+//apply dicount
+		double discount amount= totalcost*discountrate
+		totalcost=totalcost-discountamount
+		return total cost
+                                                 
+												 MODIFIED
+												 --------
+												 
+BEGIN
+    DECLARE items AS ARRAY OF FLOAT
+    DECLARE total AS FLOAT
+    DECLARE discount AS FLOAT
+    DECLARE finalTotal AS FLOAT
+    DECLARE threshold AS FLOAT
+    DECLARE discountRate AS FLOAT
+ 
+    SET items = [item1, item2, item3, ..., itemN]  // Assume item1, item2, etc., are the prices of the items
+    SET total = 0.0
+    SET threshold = 100.0  // Example threshold amount for discount
+    SET discountRate = 0.10  // Example discount rate of 10%
+ 
+    FOR EACH item IN items
+        total = total + item
+    END FOR
+ 
+    IF total > threshold THEN
+        discount = total * discountRate
+    ELSE
+        discount = 0
+    END IF
+ 
+    finalTotal = total - discount
+ 
+    PRINT "Total before discount: ", total
+    PRINT "Discount applied: ", discount
+    PRINT "Total after discount: ", finalTotal
+END
+
+
+
+Simple Calculator
+-----------------
+
+Input 1st number,double num1
+
+Input the operation , string operation
+
+input 2nd number,double num2
+
+switch(operation)
+case: "+"
+print(a+b)
+case:" -"
+print(a-b)
+case :"/"
+print(a/b)
+case:"*"
+print(a*b)
+default:
+print invalid operation
+
+                               MODIFIED
+							   --------
+BEGIN
+    DECLARE num1, num2, result AS FLOAT
+    DECLARE operator AS CHAR
+ 
+    // Input numbers and operator
+    PRINT "Enter first number: "
+    INPUT num1
+ 
+    PRINT "Enter operator (+, -, *, /): "
+    INPUT operator
+ 
+    PRINT "Enter second number: "
+    INPUT num2
+ 
+    // Perform calculation based on operator
+    IF operator == '+' THEN
+        result = num1 + num2
+    ELSE IF operator == '-' THEN
+        result = num1 - num2
+    ELSE IF operator == '*' THEN
+        result = num1 * num2
+    ELSE IF operator == '/' THEN
+        IF num2 != 0 THEN
+            result = num1 / num2
+        ELSE
+            PRINT "Error: Division by zero"
+            EXIT
+        END IF
+    ELSE
+        PRINT "Error: Invalid operator"
+        EXIT
+    END IF
+ 
+    // Output result
+    PRINT "The result is: ", result
+END
+
+
+
+/*Input 1st number,a
+
+Input the operation 
+
+input 2nd number,b
+
+if(operator==+)
+result = a+b
+
+....same for others
+*/
+
+
+fizzbuzz
+---------
+
+for(i=1,i<=100,1++)
+if(i%3==0)
+print (fizz)
+elseif(i%5==0)
+print buzz
+elseif(1%3==0 AND i%5==0)
+print fizzbuzz
+else
+invalid
+endif
+end for
+
+
+
+
+palindrome
+-----------
+Convert the input string to lower case 
+    
+ # Initialize pointers at the start and end of the  string
+    left = 0
+    right = length(String) - 1
+    
+    # Loop until the pointers meet in the middle
+    WHILE left < right:
+        # Check if characters at the current pointers are equal
+        IF String[left] != String[right]:
+            RETURN false
+        
+        # Move the pointers towards the center
+        left = left + 1
+        right = right - 1
+    
+    RETURN true
+	
+	
+	
+Largest from an array
+----------------------
+
+		input array
+		int[]numbers ={1,2,3,4,5}
+
+        // Initialize the largest number with the first element
+        int largestNumber = numbers[0];
+
+        // Loop through each number in the array
+        foreach (int number in numbers)
+		{
+            // Update the largest number if the current number is greater
+            if (number > largestNumber)
+            {
+                largestNumber = number;
+            }
+        }
+
+        // Return the largest number
+        return largestNumber;
+		
+			   
+		
+		
+pseudocode to manage simple bank account that allows deposits, withdrawals and checking the balance
+------                                  ----------                                       ----------
+
+function TestBankAccount()
+	balance=0
+	print "1.deposit"
+	print "2.withdraw"
+	print "3.check balance"
+	print "4.exit"
+        input choice
+	switch choice
+	case 1.
+	print "enter amount"
+	if amount<decimal> > 0 
+                balance = balance + amount
+                print "Deposit successful " + balance
+	 else
+                print "Invalid deposit amount."
+	case 2.
+	print "enter amount"
+	 if amount<decimal> > 0 
+                if amount<decimal> <= balance 
+                    balance = balance - amount
+                    print "Withdrawal successful"
+                else
+                    print "Insufficient balance."
+            else
+                print "Invalid withdrawal amount."
+	case 3.
+		 print "Current balance: " + balance
+	call TestBankAccount()
+	
+	
+	
+First 10 even numbers sum
+--------------------------
+
+		int count = 10;
+        int sum = 0;
+
+        // Loop to calculate the sum of the first 10 even numbers
+        for (int i = 1; i <= count; i++)
+        {
+            sum += i * 2; 
+        }
+		print sum
