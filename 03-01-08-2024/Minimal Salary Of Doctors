@@ -1,0 +1,58 @@
+//Minimal Salary Of Doctors
+
+class MinimalSalaryOfDoctors
+{
+    static void FindMinSalaryOfNDoctors()
+    {
+        int minSalary = -1;
+        Console.Write("Enter the number of salaries: ");
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= N; i++)
+        {
+            Console.Write($"Enter salary for doctor {i}: ");
+            int salary = int.Parse(Console.ReadLine());
+
+            if (i == 1)
+            {
+                minSalary = salary;
+                continue;
+            }
+
+            if (salary < minSalary)
+            {
+                minSalary = salary;
+            }
+        }
+
+        Console.WriteLine("The minimum salary among the doctors is: " + minSalary);
+    }
+
+    static void Main()
+    {
+        FindMinSalaryOfNDoctors();
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+    }
+}
+
+
+//Enter the number of salaries: 2
+//Enter salary for doctor 1: 34000
+//Enter salary for doctor 2: 45000
+//The minimum salary among the doctors is: 34000
+
+//Enter the number of salaries: 2
+//Enter salary for doctor 1: 3000
+//Enter salary for doctor 2: 5000
+//The minimum salary among the doctors is: 3000
+
+//Enter the number of salaries: 2
+//Enter salary for doctor 1: 1000
+//Enter salary for doctor 2: 100000
+//The minimum salary among the doctors is: 3000
+
+
+
+
+
