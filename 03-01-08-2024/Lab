@@ -1,0 +1,52 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            //comment - ctrl +/
+            //Delete entire Line- shift+Del
+            //Select char- shift +arrow keys
+            //select word- cntrl+shift+arrow keys
+            //duplicate a line- ctrl+c and ctrl+v
+            //move lines- alt+arrow keys
+            //Console.WriteLine("hello");
+
+
+                    //implicit conversion //
+                //Datatypes must be compatable
+                //smaller to larger/equal size
+                //and there should not be any errors
+
+            //int i = 10;
+            //long j = i;
+
+            //explicit conversion
+
+            //string s = "10";
+            //int k = int.Parse(s);
+            //Console.WriteLine(k);
+            //Console.WriteLine("Enter a name? ");
+            //string name = Console.ReadLine();
+            //Console.WriteLine( name);
+
+            //Console.WriteLine("enter a number : ");
+            //int a = int.Parse(Console.ReadLine());
+            //Console.WriteLine(a);
+
+
+            // operations
+
+            //int c = 10;
+            //int d = 5;
+
+            //Console.WriteLine(c + d);
+            //Console.WriteLine(c - d);
+            //Console.WriteLine(c * d);
+            //Console.WriteLine(c / d);
+            //Console.WriteLine(c % d);
+
+
+
+
+        }
+    }
+}
