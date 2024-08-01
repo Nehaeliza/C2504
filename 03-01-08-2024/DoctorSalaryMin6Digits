@@ -1,3 +1,5 @@
+//to check DoctorSalaryMin6Digits using if only
+
 class TestIsDoctorSalaryMin6DigitsGirish
 {
     
@@ -16,8 +18,14 @@ class TestIsDoctorSalaryMin6DigitsGirish
         return count >= 6;
     }
 
-    // input=678943, output="Doctor gets 6 digits salary"
+    // input=345443, output="Doctor gets 6 digits salary"
     // input=67894, ouput=no output
+    // input=444443, output="Doctor gets 6 digits salary"
+    // input=63, ouput=no output
+    // input=444478, output="Doctor gets 6 digits salary"
+    // input=666, ouput=no output
+
+
 
     static void TestIsDoctorSalaryMin6Digits()
     {
