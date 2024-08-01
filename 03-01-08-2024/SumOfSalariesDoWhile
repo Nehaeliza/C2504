@@ -32,3 +32,20 @@ class SumOfSalaries
         Console.WriteLine($"Total sum of valid salaries: {sum}");
     }
 }
+
+
+
+//Enter the  salary (enter 0 to stop): 36
+//Enter the  salary (enter 0 to stop): 24
+//Enter the  salary (enter 0 to stop): 0
+//Total sum of valid salaries: 59
+
+//Enter the  salary (enter 0 to stop): 36000
+//Enter the  salary (enter 0 to stop): 24000
+//Enter the  salary (enter 0 to stop): 0
+//Total sum of valid salaries: 59000
+
+//Enter the  salary (enter 0 to stop): 3000
+//Enter the  salary (enter 0 to stop): 2000
+//Enter the  salary (enter 0 to stop): 0
+//Total sum of valid salaries: 5000
