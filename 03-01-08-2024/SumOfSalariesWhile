@@ -1,0 +1,42 @@
+//SumOfSalariesWhile
+
+internal class Program
+{
+    static void Main()
+    {
+        ReadAndFindSumOfDoctorsSalariesTillZero();
+    }
+
+    static void ReadAndFindSumOfDoctorsSalariesTillZero()
+    {
+        int sum = 0;
+        int salary;
+
+        Console.Write("Enter salary (enter 0 to stop): ");
+        salary = int.Parse(Console.ReadLine());
+        
+        while (salary != 0)
+        {
+            // Validate input
+            if (salary < 0)
+            {
+                Console.WriteLine("Input valid salary");
+            }
+            else
+            {
+                sum += salary;
+            }
+
+            // Prompt for the next salary
+            Console.Write("Enter salary: ");
+            salary = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine($"Total sum of valid salaries: {sum}");
+    }
+}
+
+
+//Input-45000,50000 ,output-95000
+//Input-4000,50000 ,output-54000
+//Input-15000,1000 ,output-16000
