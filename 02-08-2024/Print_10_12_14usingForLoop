@@ -1,0 +1,37 @@
+//To Print pattern like 10,12,14,....upto n terms
+
+class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("-----Start-----");
+            TestPrintSeries10_12_14();
+            Console.WriteLine("------End------");
+            Console.WriteLine("Press any key to contine...");
+            Console.ReadKey();
+
+        }
+
+        static void PrintSeries10_12_14(int numOfTerms)
+        {
+            int term = 10;
+            for (int I = 1; I <= numOfTerms; I++)
+            {
+                Console.Write($"{term} ");
+                term = term + 2;
+            }
+        }
+        // input=10, output=10 12 14 16 18 20 22 24 26 28
+        // input=8, output=10 12 14 16 18 20 22 24
+        // input=5, output=10 12 14 16 18
+
+        static void TestPrintSeries10_12_14()
+        {
+            Console.Write("Enter number of terms:");
+            int numOfTerms = int.Parse(Console.ReadLine());
+            Console.Write("Series: ");
+            PrintSeries10_12_14(numOfTerms);
+            Console.WriteLine();
+        }
+    }
+}
