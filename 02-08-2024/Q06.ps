@@ -1,0 +1,21 @@
+//Do While
+
+
+function GetNthTerm_21_22_24_27(N)    
+    term = 21
+    difference = 1
+    int I =1;
+    do  
+        if I == N
+            break
+        end if         
+        //
+        term = term + difference
+        difference = difference + 1
+        I++
+    while( I <= N )  
+    return term
+function TestGetNthTerm_21_22_24_27()
+    Input N                             
+    nthTerm = GetNthTerm_21_22_24_27(N)
+    Print nthTerm
