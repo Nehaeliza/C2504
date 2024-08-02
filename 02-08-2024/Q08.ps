@@ -1,0 +1,22 @@
+//while
+
+function PrintNumTriangleMirroredRightAngle(N) = 5
+ int I = 1;   
+while I <= N 
+       int  J = 1;
+        while  J <= N-I     
+            Print "  "
+            J++ 
+        end while
+
+        int k=1
+        while k <= I       
+            Print k + " "
+            k++
+        end while 
+        Print NewLine 
+   I++   
+end while
+function TestPrintNumTriangleMirroredRightAngle()
+    Input N 
+    PrintNumTriangleMirroredRightAngle(N)
