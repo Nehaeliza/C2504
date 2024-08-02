@@ -1,4 +1,4 @@
-// fibonacci using for loop
+// fibonacci using while loop
 //PSEUDO
 function  PrintFibonacciFor(int N)
     {
