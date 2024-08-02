@@ -1,0 +1,75 @@
+//printing using for loop
+
+ function GetPrintNumberFor(int N)
+    {
+        for (int row = 1; row <= N; row++)
+        {
+            int spaces = N - row;
+            int num = 1;
+            for (int col = 1; col <= N; col++)
+            {
+                if (col <= spaces)
+                    print(" ");
+                else
+                   print(col);
+            }
+           print newline
+        }
+    }
+
+    function TestGetPrintNumberFor()
+    {
+        print("Enter number of lines: ");
+        input N
+        GetPrintNumberFor(N); // Fixed syntax error here
+    }
+
+
+
+
+
+---------cs---------
+//input:4, 4lines
+//input:5, 5 lines
+//input :6,6 lines
+
+
+
+
+
+
+
+
+
+
+class Q13
+{
+    static void GetPrintNumberFor(int N)
+    {
+        for (int row = 1; row <= N; row++)
+        {
+            int spaces = N - row;
+            int num = 1;
+            for (int col = 1; col <= N; col++)
+            {
+                if (col <= spaces)
+                    Console.Write(" ");
+                else
+                    Console.Write(col);
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void TestGetPrintNumberFor()
+    {
+        Console.Write("Enter number of lines: ");
+        int N = int.Parse(Console.ReadLine());
+        GetPrintNumberFor(N); // Fixed syntax error here
+    }
+
+    static void Main(string[] args)
+    {
+        TestGetPrintNumberFor();
+    }
+}
