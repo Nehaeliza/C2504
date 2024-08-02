@@ -1,0 +1,85 @@
+//printing triangle using while loop
+
+ function GetPrintNumberFor(int N)
+    {
+        int row = 1;
+        while( row <= N)
+        {
+            int spaces = N - row;
+            int num = 1;
+            int col = 1;
+            while ( col <= N )
+            {
+                if (col <= spaces)
+                    print(" ");
+                else
+                   print(col);
+                   col++
+            }
+           print newline
+           row++;
+        }
+    }
+
+    function TestGetPrintNumberFor()
+    {
+        print("Enter number of lines: ");
+        input N
+        GetPrintNumberFor(N); // Fixed syntax error here
+    }
+
+
+
+
+
+---------cs---------
+
+
+
+
+
+
+
+
+
+
+class Q13
+{
+    static void GetPrintNumberFor(int N)
+    {   
+        int row = 1;
+        while ( row <= N )
+        {
+            int spaces = N - row;
+            int num = 1;
+            int col = 1;
+            while( col <= N )
+            {
+                if (col <= spaces)
+                    Console.Write(" ");
+                else
+                    Console.Write(col);
+                    col++;
+            }
+            Console.WriteLine();
+            row++;
+        }
+    }
+
+//input:4, 4lines
+//input:5, 5 lines
+//input :6,6 lines
+
+
+    static void TestGetPrintNumberFor()
+    {
+        Console.Write("Enter number of lines: ");
+        int N = int.Parse(Console.ReadLine());
+        GetPrintNumberFor(N); // Fixed syntax error here
+    }
+
+    static void Main(string[] args)
+    {
+        TestGetPrintNumberFor();
+    }
+}
