@@ -1,0 +1,86 @@
+PS
+--------
+function FindMaxMinSalaryDifference()
+    input salary
+    
+    if salary == 0
+        print("No salaries entered.")
+        return
+
+    maxSalary = salary
+    minSalary = salary
+    
+    while salary != 0
+        if salary > maxSalary
+            maxSalary = salary
+        if salary < minSalary
+            minSalary = salary
+        
+        input salary
+
+    difference = maxSalary - minSalary
+    print("Maximum salary: ", maxSalary)
+    print("Minimum salary: ", minSalary)
+    print("Difference: ", difference)
+
+
+procedure TestFindMaxMinSalaryDifference()
+     FindMaxMinSalaryDifference()
+
+
+
+
+
+
+
+---------cs----------
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        TestFindMaxMinSalaryDifference();
+    }
+
+    static void FindMaxMinSalaryDifference()
+    {
+        Console.Write("Enter salary (0 to stop): ");
+        int salary = int.Parse(Console.ReadLine());
+
+        if (salary == 0)
+        {
+            Console.WriteLine("No salaries entered.");
+            return;
+        }
+
+        int maxSalary = salary;
+        int minSalary = salary;
+
+        while (salary != 0)
+        {
+            if (salary > maxSalary)
+            {
+                maxSalary = salary;
+            }
+
+            if (salary < minSalary)
+            {
+                minSalary = salary;
+            }
+
+            Console.Write("Enter next salary (0 to stop): ");
+            salary = int.Parse(Console.ReadLine());
+        }
+
+        int difference = maxSalary - minSalary;
+        Console.WriteLine("Maximum salary: " + maxSalary);
+        Console.WriteLine("Minimum salary: " + minSalary);
+        Console.WriteLine("Difference: " + difference);
+    }
+
+    static void TestFindMaxMinSalaryDifference()
+    {
+        FindMaxMinSalaryDifference();
+    }
+}
