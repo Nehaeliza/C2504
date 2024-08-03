@@ -1,0 +1,55 @@
+-- setup database/tables required --
+CREATE DATABASE trainer_search_db;
+
+--to switch/use db to change from master db to trainer_search db --
+USE trainer_search_db;
+
+--create table tariner in trainer_search_db --
+CREATE TABLE trainer(
+id integer primary key identity(1,1),
+name varchar(255) not null,
+skill varchar(512) not null,
+place varchar(126) not null
+
+);
+
+-- to see about table --
+sp_help trainer;
+
+SELECT * FROM trainer;
+INSERT INTO trainer(name,skill,place) VALUES('Neha','C#','Ekm');
+INSERT INTO trainer(name,skill,place) VALUES('Gladsy','C#','Tkm');
+INSERT INTO trainer(name,skill,place) VALUES('Sarika','WPF','Thrissur');
+INSERT INTO trainer(name,skill,place) VALUES('Sahla','C++','Evm');
+
+--Delete row--
+DELETE FROM trainer WHERE id = 5;
+
+--delete 2 records
+-- DELETE FROM trainer WHERE id IN (2,3);
+
+--updating skills for id 1 and 4
+
+UPDATE trainer
+SET skill = 'WPF and C#'
+WHERE id IN(1,4);
+
+--update place of id 4 to kottayam
+UPDATE trainer
+SET place = 'Kottayam'
+WHERE id =4;
+
+--name based search--
+SELECT * FROM trainer WHERE name='Neha';
+
+--to drop table- before delete delete all trainers
+DROP TABLE trainer;
+--to drop database
+DROP DATABASE trainer_search_db;
+
+
+
+
+
+
+
