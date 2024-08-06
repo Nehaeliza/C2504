@@ -163,8 +163,8 @@ SET IDENTITY_INSERT dbo.Appointments OFF;
 SET IDENTITY_INSERT dbo.Messages ON;
 INSERT INTO Messages (MessageId, FromUserId, ToUserId, Message, Timestamp, CreatedAt, UpdatedAt)
 VALUES 
-('1', '1', '2', 'Please update me on patient Alice Johnson\'s status.', GETDATE(), GETDATE(), GETDATE()),
-('2', '2', '1', 'Alice Johnson\'s status has been updated.', GETDATE(), GETDATE(), GETDATE()),
+('1', '1', '2', 'Please update me on patient Alice Johnson''s status.', GETDATE(), GETDATE(), GETDATE()),
+('2', '2', '1', 'Alice Johnson''s status has been updated.', GETDATE(), GETDATE(), GETDATE()),
 ('3', '3', '1', 'Reminder: Staff meeting tomorrow at 9 AM.', GETDATE(), GETDATE(), GETDATE()),
 ('4', '4', '3', 'Confirmed for the meeting.', GETDATE(), GETDATE(), GETDATE());
 SET IDENTITY_INSERT dbo.Messages OFF;
@@ -181,12 +181,12 @@ SET IDENTITY_INSERT dbo.Notifications OFF;
 
 SET IDENTITY_INSERT dbo.EHR_IntegrationLogs ON;
 
-INSERT INTO EHR_IntegrationLogs (LogId, EHRSystem, Status, Details, Timestamp)
+INSERT INTO EHR_IntegrationLogs (LogId, PatientId, EHRSystem, Operation, Status, Details, Timestamp)
 VALUES 
-('1', 'System A', 'Success', 'Data synced successfully.', GETDATE()),
-('2', 'System B', 'Failure', 'Data sync failed due to network error.', GETDATE()),
-('3', 'System C', 'Success', 'Data synced successfully.', GETDATE()),
-('4', 'System A', 'Failure', 'Data sync failed due to authentication error.', GETDATE());
+('1','1', 'System A', 'import', 'Success', 'Data synced successfully.', GETDATE()),
+('2','2', 'System B', 'update', 'Failure', 'Data sync failed due to network error.', GETDATE()),
+('3','3', 'System C', 'update', 'Success', 'Data synced successfully.', GETDATE()),
+('4','4', 'System A', 'import', 'Failure', 'Data sync failed due to authentication error.', GETDATE());
 SET IDENTITY_INSERT dbo.EHR_IntegrationLogs OFF;
 
 
@@ -198,6 +198,11 @@ SELECT * FROM Users;
 -- display all Patients
 SELECT * FROM Patients;
 
+-- display Users UserID, Username, Role whose Role= 'Doctor'
+SELECT UserID, Username, Role
+FROM Users
+WHERE Role= 'Doctor';
+
 -- display employees PatientID,Name,Gender whose PatientID as 1
 SELECT PatientID, Name, Gender
 FROM Patients
@@ -208,7 +213,16 @@ SELECT PatientID, Name, Gender
 FROM Patients
 ORDER BY Name DESC;
 
---To find patients having 'an' in their lastname
+
+---Sorting by using ordinal no....for the Condition column
+
+SELECT MedicalHistoryId, PatientId, Condition, DiagnosisDate
+FROM MedicalHistory
+ORDER BY 3 DESC;
+
+
+
+--To find patients having 'C' in their lastname
 SELECT PatientID, Name, Gender
 FROM Patients
 WHERE Name Like '%c';
@@ -223,8 +237,49 @@ WHERE Name Like 'c%';
 SELECT '1995-11-10' BIRTH_DATE, getdate() TODAY_DATE, 
 	DATEDIFF(YEAR, '1995-11-10', getdate()) AGE;
 
+---Finding age greater than 37
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) > 37;
 
---To find patients having 'an' in their name
+---Finding age less than 37
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) < 37;
+
+---Finding age is 37
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) = 37;
+
+---Finding age is not 37
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) <> 37;
+
+
+---Finding age of patients who is either 37 or 32
+
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) IN (37,32);
+
+---Finding age of patients who is Neither 37 or 32
+
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) NOT IN (37,32);
+
+
+---Finding age of patients who is not in between 37 or 42
+
+SELECT   Name,DATEDIFF(YEAR,  Dob, getdate()) AGE
+FROM Patients
+WHERE DATEDIFF(YEAR,  Dob, getdate()) NOT  BETWEEN 37 AND 42;
+
+
+
+---To find patients having 'an' in their name
 SELECT PatientID, Name, Gender
 FROM Patients
 WHERE Name LIKE '%AN%';
@@ -232,11 +287,24 @@ WHERE Name LIKE '%AN%';
 ---Query to Get All Users with the Role of 'doctor'
 SELECT * FROM Users WHERE Role = 'doctor';
 
+--Query to fix 10:00pm as the last appointment time
+SELECT AppointmentId, PatientId, DoctorId, Date, Time,10 as Last_Appointment_Time
+FROM Appointments;
+
+
+
 SELECT * FROM Users;
 SELECT * FROM Patients;
 SELECT * FROM MedicalHistory;
 SELECT * FROM Appointments;
 SELECT * FROM Notifications;
+
+
+
+
+
+
+
 
 
 
