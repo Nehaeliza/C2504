@@ -324,7 +324,7 @@ SELECT* FROM trainer;
 
 How to insert values into table?
 
-INSERT INTO trainer(name, skill, place) VALUES('mahesh', 'c#', 'mysore');
+INSERT INTO trainer(name, skill, place) VALUES('arya', 'c#', 'ekm');
 
 
 
