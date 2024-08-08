@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My web page</title>
+    <style>
+        code{
+            background-color: beige;
+            border-radius: 12%;
+
+        }
+    </style>
+</head>
+<body>
+    <p>hello world!!!</p>
+    <h1>hello world!!!</h1>
+    <h2>hello world!!!</h2>
+    <h3>hello world!!!</h3>
+    <h4>hello world!!!</h4>
+    <h5>hello world!!!</h5>
+    <h6>hello world!!!</h6>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque saepe beatae ex ipsa facere, veritatis voluptatem iusto officia eligendi minima repellat, incidunt quia, voluptatibus eius? Voluptas delectus ea eos corrupti.</p>
+    <p>Use <code>Console.WriteLine</code> for coding</p>
+    <pre>
+        lkj
+            lkhg
+        jmk
+    erp
+    </pre>
+</body>
+</html>
