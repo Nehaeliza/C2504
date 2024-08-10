@@ -1,0 +1,102 @@
+1.Find Customers with Multiple Orders
+Problem: Given a `Customers` table and an `Orders` table
+where `Orders` contains a `CustomerID`,
+find customers who have placed more than one order.
+
+Table Structure:
+```
+CREATE TABLE Customers (
+CustomerID INT,
+Name VARCHAR(100)
+);
+
+CREATE TABLE Orders (
+OrderID INT,
+CustomerID INT,
+OrderDate DATE
+);
+
+
+ans:
+
+SELECT c.CustomerID, c.Name, COUNT(o.OrderID) AS NumberOfOrders
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID
+GROUP BY c.CustomerID, c.Name
+HAVING COUNT(o.OrderID) > 1;
+
+--------------------------------------------------------------------------------------------------------
+
+2.Find the Most Recent Order for Each Customer
+Problem: Given an `Orders` table
+with columns `OrderID`, `CustomerID`, and `OrderDate`,
+find the most recent order date for each customer.
+
+Table Structure:
+```
+CREATE TABLE Orders (
+OrderID INT,
+CustomerID INT,
+OrderDate DATE
+);
+```
+
+ans:
+
+SELECT CustomerID,MAX(OrderDate) AS MostRecentOrder
+FROM Orders 
+GROUP BY CustomerID;
+
+
+---------------------------------------------------------------------------------------------------------------
+
+3.Find the Top N Products by Sales Volume
+Problem: Given a `Sales` table
+with columns `ProductID`, `SaleAmount`, and `SaleDate`,
+find the top 5 products by total sales volume.
+
+Table Structure:
+```
+CREATE TABLE Sales (
+ProductID INT,
+SaleAmount DECIMAL(10, 2),
+SaleDate DATE
+);
+```
+ans:
+
+SELECT ProductID, SUM(SaleAmount) AS TotalSales
+FROM Sales
+GROUP BY ProductID
+ORDER BY SUM(SaleAmount) DESC
+LIMIT 5;
+
+-----------------------------------------------------------------------------------------------------------------
+
+4.Find the Second Highest Salary
+Problem: Given an `Employees` table
+with columns `EmployeeID`, `Name`, and `Salary`,
+find the second highest salary.
+
+ans:
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employees 
+WHERE Salary<(SELECT MAX(Salary) FROM Employees)
+
+------------------------------------------------------------------------------------------------------------------
+
+
+5.Find Average Salary and Number of Employees in Each Department
+Problem: Given an `Employees` table,
+find the average salary and number of employees
+in each department.
+Table:
+Employees {EmployeeID, DepartmentID, Salary}
+
+ans:
+
+SELECT DepartmentID, AVG(Salary) AS AverageSalary,
+              COUNT(EmployeeID) AS NumberOfEmployees
+
+FROM Employees
+GROUP BY DepartmentID;
