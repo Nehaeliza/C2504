@@ -30,8 +30,7 @@ HAVING COUNT(o.OrderID) > 1;
 2.Find the Most Recent Order for Each Customer
 Problem: Given an `Orders` table
 with columns `OrderID`, `CustomerID`, and `OrderDate`,
-find the most recent order date for each customer.
-
+find the most recent order date for each customer.   //   
 Table Structure:
 ```
 CREATE TABLE Orders (
@@ -47,10 +46,27 @@ SELECT CustomerID,MAX(OrderDate) AS MostRecentOrder
 FROM Orders 
 GROUP BY CustomerID;
 
+--------------------------------------------------------------------------------------------------------------
+3.To find  recent order for each customer
+
+ans:
+
+SELECT o1.CustomerID,
+       o1.OrderID,
+       o1.OrderDate
+FROM Orders o1
+INNER JOIN (
+    SELECT CustomerID,
+           MAX(OrderDate) AS MostRecentOrderDate
+    FROM Orders
+    GROUP BY CustomerID
+) o2 ON o1.CustomerID = o2.CustomerID
+    AND o1.OrderDate = o2.MostRecentOrderDate;
+
 
 ---------------------------------------------------------------------------------------------------------------
 
-3.Find the Top N Products by Sales Volume
+4.Find the Top N Products by Sales Volume
 Problem: Given a `Sales` table
 with columns `ProductID`, `SaleAmount`, and `SaleDate`,
 find the top 5 products by total sales volume.
@@ -73,7 +89,7 @@ LIMIT 5;
 
 -----------------------------------------------------------------------------------------------------------------
 
-4.Find the Second Highest Salary
+5.Find the Second Highest Salary
 Problem: Given an `Employees` table
 with columns `EmployeeID`, `Name`, and `Salary`,
 find the second highest salary.
@@ -86,7 +102,7 @@ WHERE Salary<(SELECT MAX(Salary) FROM Employees)
 ------------------------------------------------------------------------------------------------------------------
 
 
-5.Find Average Salary and Number of Employees in Each Department
+6.Find Average Salary and Number of Employees in Each Department
 Problem: Given an `Employees` table,
 find the average salary and number of employees
 in each department.
