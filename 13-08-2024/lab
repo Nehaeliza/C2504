@@ -1,0 +1,60 @@
+using csharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace csharp
+{
+    class Movie
+    {
+
+        public int id;
+        public string name;
+
+        public Movie(int _id, string _name)
+        {
+            id = _id;
+            name = _name;
+
+        }
+
+        public Movie()
+        {
+            id = 0;
+            name = "";
+
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Movie Kalank = new Movie(1001, "Kalank");
+            Movie minnale = new Movie();
+            minnale.id = 1002;
+            minnale.name = "Minnale";
+
+            Console.WriteLine($"id={Kalank.id},name={Kalank.name}");
+            Console.WriteLine($"id={minnale.id},name={minnale.name}");
+            Console.ReadKey();
+
+
+        }
+
+
+    }
+       
+    
+}
+
+
+
+op:
+id=1001,name=Kalank
+id=1002,name=minnale
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
