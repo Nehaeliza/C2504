@@ -18,7 +18,7 @@ namespace csharp
                 }
                 if (value > 5000000)
                 {
-                    Console.WriteLine("Balance cannot be greater than 5000000. Operation canceled.");
+                    Console.WriteLine("You are not allowed to update the balance above 5000000.\n");
                     return;
                 }
                 balance = value;       
@@ -33,9 +33,10 @@ namespace csharp
 
         public void Deposit(float amount)
         {
-            if (amount > 500000)
+            if (amount > 1000000) //Biz Rule 2
             {
-                Console.WriteLine("Cannot deposit more than 500,000 at once.");
+                Console.WriteLine("You cannot deposit more than Rs.10 lacks.\nTransaction cancelled.");
+                return;
             }
             else if (amount <= 0)
             {
