@@ -1,0 +1,111 @@
+class StudentMark
+{
+    public int ID;
+    public string name ;
+
+    public int Mark1;
+    public int Mark2;
+
+    public void TotalMarks()
+    {
+        Console.WriteLine(Mark1 + Mark2);
+
+    }
+
+    public void AverageMarks()
+    {
+        Console.WriteLine((Mark1 + Mark2)/2);
+
+    }
+}
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        StudentMark studentMark1 = new StudentMark();
+        studentMark1.ID = 1;
+        studentMark1.name = "neha";
+
+        studentMark1.Mark1 = 50;
+        studentMark1.Mark2 = 60;
+        studentMark1.TotalMarks();
+        studentMark1.AverageMarks();
+
+
+
+
+        Console.ReadKey();
+    }
+}
+
+
+
+
+-------------------------------------------------------------------------------------------------
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learn
+{
+    class Calculator
+    {
+        
+        public int num1;
+        public int num2;
+
+        public void Add()
+        {
+            Console.WriteLine($" Output of Division operation is : {num1 + num2}");
+
+        }
+
+        public void Sub()
+        {
+            Console.WriteLine($" Output of Subtraction operation is : {num1 - num2}");
+
+        }
+
+        public void Mul()
+        {
+            Console.WriteLine($" Output of Multiplication operation is : {num1 * num2}");
+
+        }
+
+        public void Div()
+        {
+            Console.WriteLine($" Output of Division operation is : {num1 / num2}");
+
+        }
+
+        public void Modulus()
+        {
+            Console.WriteLine($" Output of Modulus operation is : {num1 % num2}");
+
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculator calculator = new Calculator();
+
+            calculator.num1 = 9;
+            calculator.num2 = 3;
+
+            calculator.Add();
+            calculator.Sub();
+            calculator.Mul();
+            calculator.Div();
+            calculator.Modulus();
+
+            Console.ReadKey();
+        }
+    }
+}
