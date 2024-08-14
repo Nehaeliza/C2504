@@ -1,0 +1,69 @@
+using System;
+
+class CricketGround
+{
+    public int LegSideDistance { get; set; }
+    public int OffSideDistance { get; set; }
+    public int StraightDistance { get; set; }
+    public int ThirdManDistance { get; set; }
+
+    public CricketGround(int legSide, int offSide, int straight, int thirdMan)
+    {
+        LegSideDistance = legSide;
+        OffSideDistance = offSide;
+        StraightDistance = straight;
+        ThirdManDistance = thirdMan;
+    }
+
+    public int FindShortestDistance()
+    {
+        int[] distances = { LegSideDistance, OffSideDistance, StraightDistance, ThirdManDistance };
+        return distances.Min();
+    }
+
+
+    public bool IsShortestDistanceGt(CricketGround other)
+    {
+        return this.FindShortestDistance() > other.FindShortestDistance();
+    }
+
+    public override string ToString()
+    {
+        return $"[LegSide={LegSideDistance}, OffSide={OffSideDistance}, Straight={StraightDistance}, ThirdMan={ThirdManDistance}, Shortest={FindShortestDistance()}]";
+    }
+}
+
+internal class UserOfCricketGround
+{
+    static void Main(string[] args)
+    {
+        CricketGround ground1 = new CricketGround(75, 80, 65, 70);
+        CricketGround ground2 = new CricketGround(78, 82, 60, 68);
+
+        if (ground1.IsShortestDistanceGt(ground2))
+        {
+            Console.WriteLine($"Ground 1 {ground1} is less preferred than Ground 2 {ground2}");
+        }
+        else if (ground2.IsShortestDistanceGt(ground1))
+        {
+            Console.WriteLine($"Ground 1 {ground1} is more preferred than Ground 2 {ground2}");
+        }
+        else
+        {
+            Console.WriteLine($"Ground 1 {ground1} and Ground 2 {ground2} are equally preferred");
+        }
+
+        Console.ReadKey();
+    }
+}
+
+
+op:
+
+Ground 1 [LegSide=75, OffSide=80, Straight=65, ThirdMan=70, Shortest=65] is less preferred than Ground 2 [LegSide=78, OffSide=82, Straight=60, ThirdMan=68, Shortest=60]
+-----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
