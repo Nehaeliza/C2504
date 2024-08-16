@@ -1,3 +1,14 @@
+4.  ComplexNumber { Real: int, Imaginary: int}
+        - ComplexNumber Add(ComplexNumber other)
+    TestComplexNumber for addition 
+        (3 + i4)
+     +  (5 + i3) 
+     =  (8 + i7)
+
+
+
+
+
 using System;
 
 class ComplexNumber
