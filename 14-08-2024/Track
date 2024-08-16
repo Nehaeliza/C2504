@@ -1,3 +1,11 @@
+3.  BikeRaceTrack
+        { Distance: int }
+        - bool IsGt(BikeRaceTrack other)
+    TestBikeRaceTrack
+
+
+
+
 using System;
 
 class BikeRaceTrack
