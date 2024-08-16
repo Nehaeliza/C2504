@@ -1,0 +1,43 @@
+using System;
+
+class ComplexNumber
+{
+    public int Real { get; set; }
+    public int Imaginary { get; set; }
+
+    public ComplexNumber(int real, int imaginary)
+    {
+        Real = real;
+        Imaginary = imaginary;
+    }
+
+    // Method to add two complex numbers
+    public ComplexNumber Add(ComplexNumber other)
+    {
+        int newReal = this.Real + other.Real;
+        int newImaginary = this.Imaginary + other.Imaginary;
+        return new ComplexNumber(newReal, newImaginary);
+    }
+
+    public override string ToString()
+    {
+        return $"{Real} + i{Imaginary}";
+    }
+}
+internal class TestComplexNumber
+{
+    static void Main(string[] args)
+    {
+        ComplexNumber number1 = new ComplexNumber(3, 4);
+        ComplexNumber number2 = new ComplexNumber(5, 3);
+
+        Console.WriteLine($"Number 1: {number1}");
+        Console.WriteLine($"Number 2: {number2}");
+
+        ComplexNumber result = number1.Add(number2);
+
+        Console.WriteLine($"Result of addition: {number1} + {number2} = {result}");
+
+        Console.ReadKey();
+    }
+}
