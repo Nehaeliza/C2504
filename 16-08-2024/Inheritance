@@ -1,0 +1,93 @@
+using System;
+using System.Linq;
+
+//single and multiple inheritance
+public class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Eating...");
+    }
+}
+
+public class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Barking...");
+    }
+}
+
+public class Puppy : Dog
+{
+    public void Weep()
+    {
+        Console.WriteLine("Weeping...");
+    }
+}
+
+internal class programs
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Dog");
+        Dog Brusley = new Dog();
+        Brusley.Eat();
+        Brusley.Bark();
+
+        Console.WriteLine("puppy");
+        Puppy Rocky = new Puppy();  
+        Rocky.Eat();
+        Rocky.Bark();
+        Rocky.Weep();
+    }
+}
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
+// Heirarchial inheritance
+public class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Eating...");
+    }
+}
+
+public class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Barking...");
+    }
+}
+
+public class Cat : Animal
+{
+    public void Meow()
+    {
+        Console.WriteLine("Meowing...");
+    }
+}
+
+internal class programs
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Dog");
+        Dog Brusley = new Dog();
+        Brusley.Eat();
+        Brusley.Bark();
+
+        Console.WriteLine("Meow");
+        Cat Rocky = new Cat();  
+        Rocky.Eat();
+        Rocky.Meow();
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
