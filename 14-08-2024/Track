@@ -1,0 +1,49 @@
+using System;
+
+class BikeRaceTrack
+{
+    public int Distance { get; set; }
+
+    public BikeRaceTrack(int distance)
+    {
+        Distance = distance;
+    }
+
+    // Method to compare if the current track's distance is greater than another track's distance
+    public bool IsGt(BikeRaceTrack other)
+    {
+        return this.Distance > other.Distance;
+    }
+
+    public override string ToString()
+    {
+        return $"[Distance={Distance} km]";
+    }
+}
+internal class TestBikeRaceTrack
+{
+    static void Main(string[] args)
+    {
+        BikeRaceTrack track1 = new BikeRaceTrack(100);
+        BikeRaceTrack track2 = new BikeRaceTrack(120);
+
+        Console.WriteLine($"Track 1: {track1}");
+        Console.WriteLine($"Track 2: {track2}");
+
+        if (track1.IsGt(track2))
+        {
+            Console.WriteLine($"Track 1 {track1} is longer than Track 2 {track2}");
+        }
+        else if (track2.IsGt(track1))
+        {
+            Console.WriteLine($"Track 1 {track1} is shorter than Track 2 {track2}");
+        }
+        else
+        {
+            Console.WriteLine($"Track 1 {track1} and Track 2 {track2} have equal distances");
+        }
+
+        Console.ReadKey();
+    }
+}
+
