@@ -335,3 +335,271 @@ internal class TestRationalNumber
 op:
 
 [3 / 4] / [2 / 5] = [15 / 8]
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Greater Than
+
+class RationalNumber
+{
+    public int Numerator { get; set; }
+    private int denominator;
+    public int Denominator
+    {
+        get { return denominator; }
+        set
+        {
+            if (value == 0)
+            {
+                value = 1; // Default to 1 if denominator is set to 0
+            }
+            denominator = value;
+        }
+    }
+
+    public RationalNumber(int _numerator, int _denominator)
+    {
+        if (_denominator == 0)
+        {
+            _denominator = 1;
+        }
+        this.Numerator = _numerator;
+        this.Denominator = _denominator;
+    }
+
+    public bool IsGreaterThan(RationalNumber other)
+    {
+        // Cross-multiply to compare
+        return this.Numerator * other.Denominator > other.Numerator * this.Denominator;
+    }
+
+    public override string ToString()
+    {
+        return $"[{Numerator} / {Denominator}]";
+    }
+}
+
+internal class TestRationalNumber
+{
+    static void Main(string[] args)
+    {
+        RationalNumber firstNo = new RationalNumber(3, 4);
+        RationalNumber secondNo = new RationalNumber(2, 5);
+
+        if (firstNo.IsGreaterThan(secondNo))
+        {
+            Console.WriteLine($"{firstNo} is greater than {secondNo}");
+        }
+        else
+        {
+            Console.WriteLine($"{firstNo} is not greater than {secondNo}");
+        }
+    }
+}
+
+
+op:
+
+[3 / 4] is greater than [2 / 5]
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+6.Equal To
+
+class RationalNumber
+{
+    public int Numerator { get; set; }
+    private int denominator;
+    public int Denominator
+    {
+        get { return denominator; }
+        set
+        {
+            if (value == 0)
+            {
+                value = 1; // Default to 1 if denominator is set to 0
+            }
+            denominator = value;
+        }
+    }
+
+    public RationalNumber(int _numerator, int _denominator)
+    {
+        if (_denominator == 0)
+        {
+            _denominator = 1;
+        }
+        this.Numerator = _numerator;
+        this.Denominator = _denominator;
+    }
+
+    public bool IsEqualTo(RationalNumber other)
+    {
+        // Cross-multiply to check equality
+        return this.Numerator * other.Denominator == other.Numerator * this.Denominator;
+    }
+
+    public override string ToString()
+    {
+        return $"[{Numerator} / {Denominator}]";
+    }
+}
+
+internal class TestRationalNumber
+{
+    static void Main(string[] args)
+    {
+        RationalNumber firstNo = new RationalNumber(3, 4);
+        RationalNumber secondNo = new RationalNumber(6, 8);
+
+        if (firstNo.IsEqualTo(secondNo))
+        {
+            Console.WriteLine($"{firstNo} is equal to {secondNo}");
+        }
+        else
+        {
+            Console.WriteLine($"{firstNo} is not equal to {secondNo}");
+        }
+    }
+}
+
+
+
+op:
+
+3/4 is not equal to 6/8
+------------------------------------------------------------------------------------------------------------------------------
+
+7. Greater than or equalto
+
+
+class RationalNumber
+{
+    public int Numerator { get; set; }
+    private int denominator;
+    public int Denominator
+    {
+        get { return denominator; }
+        set
+        {
+            if (value == 0)
+            {
+                value = 1; // Default to 1 if denominator is set to 0
+            }
+            denominator = value;
+        }
+    }
+
+    public RationalNumber(int _numerator, int _denominator)
+    {
+        if (_denominator == 0)
+        {
+            _denominator = 1;
+        }
+        this.Numerator = _numerator;
+        this.Denominator = _denominator;
+    }
+
+    public bool IsEqualTo(RationalNumber other)
+    {
+        // Cross-multiply to check equality
+        return this.Numerator * other.Denominator >= other.Numerator * this.Denominator;
+    }
+
+    public override string ToString()
+    {
+        return $"[{Numerator} / {Denominator}]";
+    }
+}
+
+internal class TestRationalNumber
+{
+    static void Main(string[] args)
+    {
+        RationalNumber firstNo = new RationalNumber(3, 4);
+        RationalNumber secondNo = new RationalNumber(6, 8);
+
+        if (firstNo.IsEqualTo(secondNo))
+        {
+            Console.WriteLine($"{firstNo} is greater than or equal to {secondNo}");
+        }
+        else
+        {
+            Console.WriteLine($"{firstNo} is less than {secondNo}");
+        }
+    }
+}
+
+op:
+
+[3 / 4] is greater than or equal to [6 / 8]
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+8 Less than or equal to
+
+class RationalNumber
+{
+    public int Numerator { get; set; }
+    private int denominator;
+    public int Denominator
+    {
+        get { return denominator; }
+        set
+        {
+            if (value == 0)
+            {
+                value = 1; // Default to 1 if denominator is set to 0
+            }
+            denominator = value;
+        }
+    }
+
+    public RationalNumber(int _numerator, int _denominator)
+    {
+        if (_denominator == 0)
+        {
+            _denominator = 1;
+        }
+        this.Numerator = _numerator;
+        this.Denominator = _denominator;
+    }
+
+    public bool IsLessThanOrEqualTo(RationalNumber other)
+    {
+        // Cross-multiply to check if the current rational number is less than or equal to the other
+        return this.Numerator * other.Denominator <= other.Numerator * this.Denominator;
+    }
+
+    public override string ToString()
+    {
+        return $"[{Numerator} / {Denominator}]";
+    }
+}
+
+internal class TestRationalNumber
+{
+    static void Main(string[] args)
+    {
+        RationalNumber firstNo = new RationalNumber(3, 4);
+        RationalNumber secondNo = new RationalNumber(6, 8);
+
+        if (firstNo.IsLessThanOrEqualTo(secondNo))
+        {
+            Console.WriteLine($"{firstNo} is less than or equal to {secondNo}");
+        }
+        else
+        {
+            Console.WriteLine($"{firstNo} is greater than {secondNo}");
+        }
+    }
+}
+
+op:
+
+[3 / 4] is greater than or equal to [6 / 8]
