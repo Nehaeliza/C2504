@@ -1,0 +1,86 @@
+
+
+public class HospitalStay
+{
+    public string StayID { get; set; }
+    public int NumberOfDays { get; set; }
+
+    public HospitalStay(string stayID, int numberOfDays)
+    {
+        StayID = stayID;
+        NumberOfDays = numberOfDays;
+    }
+
+    // Equals method
+    public bool Equals(HospitalStay other)
+    {
+        if (other == null) return false;
+        return this.NumberOfDays == other.NumberOfDays;
+    }
+
+    // NotEquals method
+    public bool NotEquals(HospitalStay other)
+    {
+        return !Equals(other);
+    }
+
+    // GreaterThan method 
+    public bool GreaterThan(HospitalStay other)
+    {
+        if (other == null) throw new ArgumentNullException(nameof(other));
+        return this.NumberOfDays > other.NumberOfDays;
+    }
+
+    // GreaterThanEquals method 
+    public bool GreaterThanEquals(HospitalStay other)
+    {
+        if (other == null) throw new ArgumentNullException(nameof(other));
+        return this.NumberOfDays >= other.NumberOfDays;
+    }
+
+    // LessThan method 
+    public bool LessThan(HospitalStay other)
+    {
+        if (other == null) throw new ArgumentNullException(nameof(other));
+        return this.NumberOfDays < other.NumberOfDays;
+    }
+
+    // LessThanEquals method 
+    public bool LessThanEquals(HospitalStay other)
+    {
+        if (other == null) throw new ArgumentNullException(nameof(other));
+        return this.NumberOfDays <= other.NumberOfDays;
+    }
+}
+
+
+public class Program
+{
+    public static void Main()
+    {
+        HospitalStay stay1 = new HospitalStay("HS001", 5);
+        HospitalStay stay2 = new HospitalStay("HS002", 7);
+
+        Console.WriteLine(stay1.Equals(stay2));
+        Console.WriteLine(stay1.NotEquals(stay2));
+        Console.WriteLine(stay1.GreaterThan(stay2));
+        Console.WriteLine(stay1.GreaterThanEquals(stay2));
+        Console.WriteLine(stay1.LessThan(stay2));
+        Console.WriteLine(stay1.LessThanEquals(stay2));
+
+    }
+}
+
+
+
+
+
+OUTPUT:
+
+
+False
+True
+False
+False
+True
+True
