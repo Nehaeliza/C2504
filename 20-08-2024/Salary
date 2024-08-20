@@ -1,0 +1,125 @@
+using System;
+
+abstract class Employee
+{
+    public string Name { get; set; }
+    public abstract double CalculateSalary();
+}
+
+class FullTimeEmployee : Employee
+{
+    public double BaseSalary { get; set; }
+    public double BonusPercentage { get; set; }
+
+    public override double CalculateSalary()
+    {
+        return BaseSalary + (BaseSalary * BonusPercentage / 100);
+    }
+}
+
+class PartTimeEmployee : Employee
+{
+    public double HourlyRate { get; set; }
+    public double HoursWorked { get; set; }
+
+    public override double CalculateSalary()
+    {
+        return HourlyRate * HoursWorked;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Employee minSalaryEmployee = null;
+        Employee maxSalaryEmployee = null;
+        string input;
+
+        while (true)
+        {
+            Console.WriteLine("Enter employee type (FullTime or PartTime) or 'exit' to terminate:");
+            input = Console.ReadLine();
+
+            if (input.ToLower() == "exit")
+            {
+                break;
+            }
+
+            Employee employee = null;
+            if (input.ToLower() == "fulltime")
+            {
+                employee = new FullTimeEmployee();
+                Console.Write("Enter name: ");
+                employee.Name = Console.ReadLine();
+
+                Console.Write("Enter base salary: ");
+                ((FullTimeEmployee)employee).BaseSalary = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Enter bonus percentage: ");
+                ((FullTimeEmployee)employee).BonusPercentage = Convert.ToDouble(Console.ReadLine());
+            }
+            else if (input.ToLower() == "parttime")
+            {
+                employee = new PartTimeEmployee();
+                Console.Write("Enter name: ");
+                employee.Name = Console.ReadLine();
+
+                Console.Write("Enter hourly rate: ");
+                ((PartTimeEmployee)employee).HourlyRate = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Enter hours worked: ");
+                ((PartTimeEmployee)employee).HoursWorked = Convert.ToDouble(Console.ReadLine());
+            }
+            else
+            {
+                Console.WriteLine("Invalid input, please try again.");
+                continue;
+            }
+
+            double salary = employee.CalculateSalary();
+
+            if (minSalaryEmployee == null || salary < minSalaryEmployee.CalculateSalary())
+            {
+                minSalaryEmployee = employee;
+            }
+
+            if (maxSalaryEmployee == null || salary > maxSalaryEmployee.CalculateSalary())
+            {
+                maxSalaryEmployee = employee;
+            }
+        }
+
+        if (minSalaryEmployee != null && maxSalaryEmployee != null)
+        {
+            Console.WriteLine($"\nEmployee with the minimum salary: {minSalaryEmployee.Name}, Salary: {minSalaryEmployee.CalculateSalary():C}");
+            Console.WriteLine($"Employee with the maximum salary: {maxSalaryEmployee.Name}, Salary: {maxSalaryEmployee.CalculateSalary():C}");
+        }
+        else
+        {
+            Console.WriteLine("No employee data was entered.");
+        }
+    }
+}
+
+
+
+
+op:
+
+Enter employee type (FullTime or PartTime) or 'exit' to terminate:
+FullTime
+Enter name: neha
+Enter base salary: 100000
+Enter bonus percentage: 10
+Enter employee type (FullTime or PartTime) or 'exit' to terminate:
+FullTime
+Enter name: archa
+Enter base salary: 30000
+Enter bonus percentage: 10
+Enter employee type (FullTime or PartTime) or 'exit' to terminate:
+exit
+
+Employee with the minimum salary: archa, Salary: ? 33,000.00
+Employee with the maximum salary: neha, Salary: ? 1,10,000.00
+Press any key to continue . . .
