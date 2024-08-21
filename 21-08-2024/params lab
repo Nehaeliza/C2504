@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp33
+{
+
+    
+    class Program
+    {
+        
+        static int Add(params int[] numbers)
+        {
+            int sum = 0;
+            for (int i = 0;i< numbers.Length;i++)
+            {
+                sum += numbers[i];
+            }
+            return sum;
+        }
+
+        static void Main(string[] args)
+        {
+            int result1 = Add(10, 20, 30);
+            Console.WriteLine($"Sum of 10, 20, 30 is: {result1}");
+
+        }
+    }
+
+}
