@@ -1,0 +1,200 @@
+Define function FindMinSeverityLevel which takes allegies array, two elements indices. Returns min severity level among two elements.
+
+
+
+using System;
+
+namespace Allergy
+{
+    class Allergy
+    {
+        public int AllergyID { get; set; }
+        public string PatientName { get; set; }
+        public string Allergen { get; set; }
+        public int SeverityLevel { get; set; }
+
+        public Allergy(int allergyID, string patientName, string allergen, int severityLevel)
+        {
+            AllergyID = allergyID;
+            PatientName = patientName;
+            Allergen = allergen;
+            SeverityLevel = severityLevel;
+        }
+
+        public override string ToString()
+        {
+            return $"Allergy ID: {AllergyID}, Patient Name: {PatientName}, Allergen: {Allergen}, Severity Level: {SeverityLevel}";
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the number of allergies: ");
+            int numberOfAllergies = int.Parse(Console.ReadLine());
+            Allergy[] allergies = new Allergy[numberOfAllergies];
+
+            // Input allergy details
+            for (int i = 0; i < numberOfAllergies; i++)
+            {
+                Console.Write("Enter the Allergy ID: ");
+                int allergyID = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter the Patient Name: ");
+                string patientName = Console.ReadLine();
+
+                Console.Write("Enter the Allergen: ");
+                string allergen = Console.ReadLine();
+
+                int severityLevel;
+                while (true)
+                {
+                    Console.Write("Enter the Severity Level (1 to 10): ");
+                    if (int.TryParse(Console.ReadLine(), out severityLevel) && severityLevel >= 1 && severityLevel <= 10)
+                    {
+                        break; // valid input, exit loop
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Severity Level must be an integer between 1 and 10.");
+                    }
+                }
+
+                allergies[i] = new Allergy(allergyID, patientName, allergen, severityLevel);
+            }
+
+            Console.Write("Enter first index to compare: ");
+            int index1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter second index to compare: ");
+            int index2 = int.Parse(Console.ReadLine());
+
+            // Find and display the most severe allergy
+            Allergy mostSevere = FindMostSevereAllergy(allergies);
+            if (mostSevere != null)
+            {
+                Console.WriteLine($"Most Severe Allergy: {mostSevere}");
+            }
+            else
+            {
+                Console.WriteLine("No allergies found.");
+            }
+
+            // Find and display the second least severe allergy
+            Allergy secondLeastSevere = FindSecondLeastSevereAllergy(allergies);
+            if (secondLeastSevere != null)
+            {
+                Console.WriteLine($"Second Least Severe Allergy: {secondLeastSevere}");
+            }
+            else
+            {
+                Console.WriteLine("Not enough allergies to find the second least severe.");
+            }
+
+            // Find and display the minimum severity level between two indices
+            try
+            {
+                int minSeverity = FindMinSeverityLevel(allergies, index1, index2);
+                Console.WriteLine($"The minimum severity level between index {index1} and {index2} is: {minSeverity}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+
+            // Sort allergies by allergen using Selection Sort
+            SelectionSort(allergies);
+
+            // Display sorted list of allergies
+            Console.WriteLine("Sorted list by allergen:");
+            foreach (Allergy allergy in allergies)
+            {
+                Console.WriteLine(allergy);
+            }
+        }
+
+        static Allergy FindMostSevereAllergy(Allergy[] allergies)
+        {
+            if (allergies.Length == 0) return null;
+
+            Allergy mostSevere = allergies[0];
+            foreach (var allergy in allergies)
+            {
+                if (allergy != null && allergy.SeverityLevel > mostSevere.SeverityLevel)
+                {
+                    mostSevere = allergy;
+                }
+            }
+
+            return mostSevere;
+        }
+
+        static Allergy FindSecondLeastSevereAllergy(Allergy[] allergies)
+        {
+            if (allergies.Length < 2) return null;
+
+            Allergy leastSevere = allergies[0];
+            Allergy secondLeastSevere = null;
+
+            foreach (var allergy in allergies)
+            {
+                if (allergy != null)
+                {
+                    if (allergy.SeverityLevel < leastSevere.SeverityLevel)
+                    {
+                        secondLeastSevere = leastSevere;
+                        leastSevere = allergy;
+                    }
+                    else if (secondLeastSevere == null || (allergy.SeverityLevel < secondLeastSevere.SeverityLevel && allergy.SeverityLevel > leastSevere.SeverityLevel))
+                    {
+                        secondLeastSevere = allergy;
+                    }
+                }
+            }
+
+            return secondLeastSevere;
+        }
+
+        static void SelectionSort(Allergy[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                // Assume the current position contains the smallest element
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++)
+                {
+                    // Compare allergens and find the smallest one
+                    if (string.Compare(array[j].Allergen, array[minIndex].Allergen, StringComparison.Ordinal) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+                // Swap the found smallest element with the element at index i
+                if (minIndex != i)
+                {
+                    Allergy temp = array[i];
+                    array[i] = array[minIndex];
+                    array[minIndex] = temp;
+                }
+            }
+        }
+
+
+        
+
+        static int FindMinSeverityLevel(Allergy[] allergies, int index1, int index2)
+        {
+            if (allergies[index1].SeverityLevel < allergies[index2].SeverityLevel)
+            {
+                return allergies[index1].SeverityLevel;
+
+            }
+            else
+            {
+                return allergies[index2].SeverityLevel;
+            }
+        }
+    }
+}
