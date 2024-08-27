@@ -1,0 +1,371 @@
+1. assembly info.cs:
+
+[assembly: log4net.Config.XmlConfigurator]
+
+2. appinfo.cs
+
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	
+		<configSections>
+			<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+		</configSections>
+
+		<log4net>
+			<!-- File Appender -->
+			<appender name="FileAppender" type="log4net.Appender.RollingFileAppender">
+				<file value="week4assessment_app_log.log" />
+				<appendToFile value="true" />
+				<rollingStyle value="Size" />
+				<maxSizeRollBackups value="5" />
+				<maximumFileSize value="10MB" />
+				<staticLogFileName value="true" />
+				<layout type="log4net.Layout.PatternLayout">
+					<conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+				</layout>
+			</appender>
+
+			<!-- Console Appender -->
+			<appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+				<layout type="log4net.Layout.PatternLayout">
+					<conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+				</layout>
+			</appender>
+
+			<!-- Root logger -->
+			<root>
+				<level value="ALL" />
+				<appender-ref ref="FileAppender" />
+				<appender-ref ref="ConsoleAppender" />
+			</root>
+		</log4net>
+		
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+</configuration>
+
+
+3.database.cs
+
+CREATE DATABASE Week4AssessmentDb;
+
+USE Week4AssessmentDb;
+
+CREATE TABLE Allergy (
+    AllergyID INT PRIMARY KEY,
+    PatientName NVARCHAR(100),
+    Allergen NVARCHAR(100),
+    SeverityLevel INT
+);
+
+INSERT INTO Allergy 
+(AllergyID, PatientName, Allergen,SeverityLevel) VALUES 
+(1, 'Neha', 'Peanut', 2),
+(2, 'Rittu', 'Fish', 5),
+(3, 'Navya', 'Diary ',7);
+
+SELECT * FROM Allergy;
+
+
+
+
+4.Program.cs
+
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Week4AssessmentApp
+{
+    public class ServerException : Exception
+    {
+        public ServerException(string message) : base(message) { }
+    }
+    public class Allergy
+    {
+        public int AllergyID { get; set; }
+        public string PatientName { get; set; }
+        public string Allergen { get; set; }
+        public int SeverityLevel { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{AllergyID},{PatientName},{Allergen},{SeverityLevel}]";
+        }
+    }
+    public class AllergyRepo
+    {
+        /*public static void Read(MedicationExpiry[] medicationExpiries)
+        {
+            for (int i = 0; i < medicationExpiries.Length; i++)
+            {
+                Console.WriteLine($"Enter details for medication {i + 1}:");
+                Console.Write("BatchID: ");
+                int batchID = int.Parse(Console.ReadLine());
+                Console.Write("Medication: ");
+                string medication = Console.ReadLine();
+                Console.Write("ExpiryDate (yyyy-mm-dd): ");
+                DateTime expiryDate = DateTime.Parse(Console.ReadLine());
+
+                medicationExpiries[i] = new MedicationExpiry
+                                        {
+                                            BatchID = batchID,
+                                            Medication = medication,
+                                            ExpiryDate = expiryDate
+                                        };
+            }
+        }*/
+        private static string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Week4AssessmentDb;Integrated Security=True;";
+        public static void Read(Allergy[] allergies)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT AllergyID, PatientName, Allergen,  SeverityLevel FROM Allergy";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    for (int i = 0; i < allergies.Length; i++)
+                    {
+                        if (!reader.Read())
+                        {
+                            throw new ServerException("[0101]Server Errror.");//throw error
+                        }
+                        allergies[i] = new Allergy
+                        {
+                            AllergyID = (int)reader["AllergyID"],
+                            PatientName = reader["PatientName"].ToString(),
+                            Allergen = reader["Allergen"].ToString(),
+                            SeverityLevel = (int)reader["SeverityLevel"]
+                        };
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Handle SQL exceptions
+                //Console.WriteLine($"SQL Error: {ex.Message}");
+                throw new ServerException($"[0102]Server Errror.{ex.Message}");//throw Error
+            }
+            catch (ServerException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                //Console.WriteLine($"Error: {ex.Message}");
+                throw new ServerException($"[0103]Server Errror.{ex.Message}");//throw Error
+            }
+        }
+        public static void SelectionSort(Allergy[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                // Assume the current position contains the smallest element
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++)
+                {
+                    // Compare allergens and find the smallest one
+                    if (string.Compare(array[j].Allergen, array[minIndex].Allergen, StringComparison.Ordinal) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+                // Swap the found smallest element with the element at index i
+                if (minIndex != i)
+                {
+                    Allergy temp = array[i];
+                    array[i] = array[minIndex];
+                    array[minIndex] = temp;
+                }
+            }
+
+        }
+        public static Allergy FindSecondLeastSevereAllergy(Allergy[] allergies)
+        {
+            if (allergies.Length < 2) return null;
+
+            Allergy leastSevere = null;
+            Allergy secondLeastSevere = null;
+
+            foreach (var allergy in allergies)
+            {
+                if (allergy != null)
+                {
+                    if (leastSevere == null || allergy.SeverityLevel < leastSevere.SeverityLevel)
+                    {
+                        secondLeastSevere = leastSevere;
+                        leastSevere = allergy;
+                    }
+                    else if (secondLeastSevere == null || allergy.SeverityLevel < secondLeastSevere.SeverityLevel)
+                    {
+                        // Only update if it's not equal to the leastSevere level
+                        if (allergy.SeverityLevel > leastSevere.SeverityLevel)
+                        {
+                            secondLeastSevere = allergy;
+                        }
+                    }
+                }
+            }
+
+            return secondLeastSevere;
+        }
+
+        public static Allergy FindMostSevereAllergy(Allergy[] allergies)
+        {
+            if (allergies.Length == 0) return null;
+
+            Allergy mostSevere = allergies[0];
+            foreach (var allergy in allergies)
+            {
+                if (allergy != null && allergy.SeverityLevel > mostSevere.SeverityLevel)
+                {
+                    mostSevere = allergy;
+                }
+            }
+
+            return mostSevere;
+        }
+    }
+    public class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main(string[] args)
+        {
+            //log.Debug(DateTime.MinValue);
+            Allergy[] allergies = new Allergy[3];
+            try
+            {
+                AllergyRepo.Read(allergies);
+            }
+            catch (ServerException ex)
+            {
+                log.Error($"{ex.Message}");//Console.WriteLine($"{ex.Message}");
+            }
+            Allergy mostSevere = AllergyRepo.FindMostSevereAllergy(allergies);
+            if (mostSevere != null)
+            {
+                log.Info($"Most Severe Allergy: {mostSevere}");
+            }
+            else
+            {
+                log.Warn("No allergies found.");
+            }
+
+            Allergy secondLeastSevere = AllergyRepo.FindSecondLeastSevereAllergy(allergies);
+            if (secondLeastSevere != null)
+            {
+                log.Info($"Second Least Severe Allergy: {secondLeastSevere}");
+            }
+            else
+            {
+                log.Warn("Not enough allergies to find the second least severe.");
+            }
+
+            AllergyRepo.SelectionSort(allergies);
+
+            log.Info("Sorted list by allergen:");
+            string output = "";
+            foreach (var e in allergies)
+            {
+                output += $"{e} ";
+            }
+            log.Info(output);//Co
+        }
+    }
+}
+
+
+5. Test.cs
+
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Week4AssessmentApp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Reflection;
+
+namespace Week4AssessmentApp.Tests
+{
+    [TestClass()]
+    public class AllergyTests
+    {
+        [TestClass()]
+        public class AllergyRepoTests
+        {
+            //[TestMethod()]
+            //public void ReadTest()
+            //{
+            //    Assert.Fail();
+            //}
+
+            [TestMethod()]
+            public void SelectionSortTest()
+            {
+                Allergy[] allergies = new Allergy[3];
+                AllergyRepo.Read(allergies);
+                Allergy expected = new Allergy
+                {
+                    AllergyID = 3,
+                    PatientName = "Navya",
+                    Allergen = "Diary ",
+                    SeverityLevel = 7
+                };
+                AllergyRepo.SelectionSort(allergies);
+                Allergy actual = allergies[0];
+                Assert.AreEqual(expected.ToString(), actual.ToString());
+            }
+
+            [TestMethod()]
+            public void FindSecondLeastSevereAllergyTest()
+            {
+                Allergy[] allergies = new Allergy[3];
+                AllergyRepo.Read(allergies);
+                Allergy expected = new Allergy
+                {
+                    AllergyID = 2,
+                    PatientName = "Rittu",
+                    Allergen = "Fish",
+                    SeverityLevel = 5
+                };
+                Allergy actual = AllergyRepo.FindSecondLeastSevereAllergy(allergies);
+                Assert.AreEqual(expected.ToString(), actual.ToString());
+            }
+
+            [TestMethod()]
+            public void FindMostSevereAllergyTest()
+            {
+
+                Allergy[] allergies = new Allergy[3];
+                AllergyRepo.Read(allergies);
+                Allergy expected = new Allergy
+                {
+                    AllergyID = 3,
+                    PatientName = "Navya",
+                    Allergen = "Diary ",
+                    SeverityLevel = 7
+                };
+                Allergy actual = AllergyRepo.FindMostSevereAllergy(allergies);
+
+                Assert.AreEqual(expected.ToString(), actual.ToString());
+            }
+        }
+    }
+}
