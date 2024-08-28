@@ -1,0 +1,173 @@
+//using System;
+//using System.Collections.Generic;
+using System.Linq;
+//using System.Runtime.InteropServices;
+//using System.Text;
+//using System.Threading.Tasks;
+
+//namespace pgm
+//{
+//internal class Programs
+//{
+//    static int FindDistinctSalaryInArray(double[] ar, int N, int target)
+//    {
+//        int index = 0;
+//        foreach (var num in ar)
+//        {
+//            if (num == target) return index;
+//            index++;
+//        }
+//        return -1;
+//    }
+
+//    static void Main()
+//    {
+//        Console.Write("Enter salary: ");
+//        int Salary = int.Parse(Console.ReadLine());
+
+//        double[] DistinctSalary = new double[Salary];
+//        int numOfDistinctSalary = 0;
+//        int[] counts = new int[Salary];
+
+//        for ( double i =0; i< DistinctSalary.Length; i++)
+//        {
+//            double pos = FindDistinctSalaryInArray(DistinctSalary, numOfDistinctSalary, Salary);
+//            if (pos != -1)
+//            {
+//                counts[pos]++;
+//                continue;
+//            }
+//            DistinctSalary[numOfDistinctSalary] = i;
+//            counts[numOfDistinctSalary] = 1;
+//            numOfDistinctSalary++;
+//        }
+
+//        for (int i = 0; i < numOfDistinctSalary; i++)
+//        {
+//            Console.WriteLine($"'{DistinctSalary[i]}' occurred {counts[i]} times.");
+//        }
+//    }
+//}
+
+using System;
+using System.Diagnostics.Eventing.Reader;
+using System.Security.Policy;
+//using System.Collections.Generic;
+//using System.Globalization;
+//using System.Linq;
+
+//internal class Programs
+//{
+    //static int FindDigitInArray(double[] ar, int N, double target)
+    //{
+    //    int index = 0;
+    //    foreach (var num in ar)
+    //    {
+    //        if (num == target) return index;
+    //        index++;
+    //    }
+    //    return -1;
+    //}
+
+    //static void Main()
+    //{
+        //var a = "abcdef";
+        //var b = "bcdegh";
+
+        //Console.WriteLine("enter 1st string");
+        //var a = Console.ReadLine();
+        //Console.WriteLine("enter 2nd string");
+        //var b = Console.ReadLine();
+
+        //var common = a.Intersect(b);
+
+        //Console.WriteLine("Common characters: " + string.Join(", ", common));
+
+        //var a = "abcedfe";
+        //var b = "eghjiklaabcd";
+
+        //var largest = a.Length > b.Length ? a : b;
+        //var smallest = a.Length < b.Length ? a : b;
+        //var withoutDups = string.Empty;
+
+        //foreach (var item in largest)
+        //{
+        //    if (!withoutDups.Contains(item))
+        //        withoutDups += item;
+        //}
+
+        //foreach (var item in withoutDups)
+        //{
+        //    if (smallest.Contains(item))
+        //    {
+        //        Console.WriteLine($"Found: {item}");
+        //    }
+        //}
+        
+
+
+
+        //var arr = new int[] { 1, 2, 3, 4, 5 };
+        //var lst = arr.ToList();
+
+        //String data = "   hello   ";
+        //Console.WriteLine(data.Trim());
+        //Console.WriteLine(data.TrimEnd());
+        //Console.WriteLine(data.TrimStart());
+
+        //var a = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        //var max = a.Take(5).Max();
+        //Console.WriteLine(max.ToString());
+        //var min = a.Skip(5).Min();
+        //Console.WriteLine(min.ToString());
+
+
+        //Console.Write("Enter your salary as a sequence of digits: ");
+        //string salary = Console.ReadLine();
+
+        //double[] digits = new double[salary.Length];
+        //int numOfDistinctDigits = 0;
+        //int[] counts = new int[salary.Length];
+
+        //// Convert salary string into an array of digits and count occurrences
+        //foreach (char ch in salary)
+        //{
+        //    double digit = double.Parse(ch.ToString());
+        //    int pos = FindDigitInArray(digits, numOfDistinctDigits, digit);
+        //    if (pos != -1)
+        //    {
+        //        counts[pos]++;
+        //        continue;
+        //    }
+        //    digits[numOfDistinctDigits] = digit;
+        //    counts[numOfDistinctDigits] = 1;
+        //    numOfDistinctDigits++;
+        //}
+
+        //// Display the frequencies
+        //for (int i = 0; i < numOfDistinctDigits; i++)
+        //{
+        //    Console.WriteLine($"Digit '{digits[i]}' occurred {counts[i]} times.");
+        //}
+
+        //for (int i = 0; i < 100; i++)
+        //{
+        //    if (i % 2 == 0)
+        //    {
+        //        Console.WriteLine("buzz");
+        //    }
+        //    else if(i%3 ==0)
+        //    {
+        //        Console.WriteLine("fizz");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("buzzfizz");
+        //    }
+
+        //    }
+        //}
+    //}
+//}
+
+
