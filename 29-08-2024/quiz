@@ -1,0 +1,122 @@
+using System;
+using System.Collections.Generic;
+
+class QuizApplication
+{
+    // Class to represent a quiz question
+    public class Question
+    {
+        // Properties to store the question text, possible options, and the index of the correct answer
+        public string Text { get; set; }
+        public string[] Options { get; set; }
+        public int CorrectAnswerIndex { get; set; }
+
+        // Constructor to initialize a question with the provided text, options, and correct answer index
+        public Question(string text, string[] options, int correctAnswerIndex)
+        {
+            Text = text;
+            Options = options;
+            CorrectAnswerIndex = correctAnswerIndex;
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        // A list to store all the quiz questions
+        List<Question> quiz = new List<Question>();
+        int score = 0;
+
+        // Adding sample questions to the quiz list using the AddQuestion function
+        AddQuestion(quiz, "What is the capital of France?", new string[] { "Berlin", "Madrid", "Paris", "Rome" }, 2);
+        AddQuestion(quiz, "Which planet is known as the Red Planet?", new string[] { "Earth", "Mars", "Jupiter", "Saturn" }, 1);
+        AddQuestion(quiz, "Which language is primarily used for Android app development?", new string[] { "C#", "Java", "Python", "Swift" }, 1);
+
+        // Displaying the main menu to the user
+        Console.WriteLine("Welcome to the Quiz Application!");
+        Console.WriteLine("You can add a new question or take the quiz.");
+        Console.WriteLine("1. Add a new question");
+        Console.WriteLine("2. Take the quiz");
+        Console.Write("Enter your choice: ");
+        int choice = int.Parse(Console.ReadLine());
+
+        // If the user chooses to add a new question
+        if (choice == 1)
+        {
+            AddQuestionManually(quiz);  // Call the function to add a question manually
+        }
+
+        // If the user chooses to take the quiz
+        score = TakeQuiz(quiz);  // Call the function to take the quiz and store the score
+
+        // Displaying the final score to the user
+        Console.WriteLine($"You scored {score} out of {quiz.Count}!");
+    }
+
+    // Function to add a question to the quiz list
+    static void AddQuestion(List<Question> quiz, string text, string[] options, int correctAnswerIndex)
+    {
+        // Create a new Question object and add it to the list
+        quiz.Add(new Question(text, options, correctAnswerIndex));
+    }
+
+    // Function to manually add a question by getting input from the user
+    static void AddQuestionManually(List<Question> quiz)
+    {
+        // Prompt the user to enter the question text
+        Console.WriteLine("Enter the question text: ");
+        string questionText = Console.ReadLine();
+
+        // Create an array to store the 4 options
+        string[] options = new string[4];
+        for (int i = 0; i < 4; i++)
+        {
+            // Prompt the user to enter each option
+            Console.WriteLine($"Enter option {i + 1}: ");
+            options[i] = Console.ReadLine();
+        }
+
+        // Prompt the user to enter the number corresponding to the correct option
+        Console.WriteLine("Enter the correct option number (1-4): ");
+        int correctOption = int.Parse(Console.ReadLine()) - 1;  // Subtract 1 to match the zero-based index
+
+        // Add the new question to the quiz list using the AddQuestion function
+        AddQuestion(quiz, questionText, options, correctOption);
+    }
+
+    // Function to take the quiz
+    static int TakeQuiz(List<Question> quiz)
+    {
+        int score = 0;
+
+        // Loop through each question in the quiz
+        foreach (var question in quiz)
+        {
+            // Display the question text and options
+            Console.WriteLine(question.Text);
+            for (int i = 0; i < question.Options.Length; i++)
+            {
+                Console.WriteLine($"{i + 1}. {question.Options[i]}");  // Display each option with a number
+            }
+
+            // Prompt the user to enter their answer (1-4)
+            Console.Write("Enter your answer (1-4): ");
+            int answer = int.Parse(Console.ReadLine()) - 1;  // Subtract 1 to match the zero-based index
+
+            // Check if the answer is correct
+            if (answer == question.CorrectAnswerIndex)
+            {
+                Console.WriteLine("Correct!");
+                score++;  // Increase the score if the answer is correct
+            }
+            else
+            {
+                // Display the correct answer if the user was wrong
+                Console.WriteLine($"Wrong! The correct answer was {question.Options[question.CorrectAnswerIndex]}.");
+            }
+
+            Console.WriteLine();  // Blank line for better readability
+        }
+
+        return score;  // Return the user's score
+    }
+}
