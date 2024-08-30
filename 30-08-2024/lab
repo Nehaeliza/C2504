@@ -1,0 +1,333 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace progress
+{
+    // ----------------------indexer example 1-------------------
+
+    //public class Website
+    //{
+    //    public string Name { get; set; }
+    //    public string Address { get; set; }
+    //}
+
+    //public class Websites
+    //{
+    //    private Website[] data = new Website[10];
+
+    //    public Website this[int index]
+    //    {
+    //        get { return data[index]; }
+    //        set { data[index] = value; }
+    //    }
+    //}
+
+    //internal class Program
+    //{
+    //    public static void Main()
+    //    {
+    //        var websites = new Websites();
+    //        websites[0] = new Website() { Name = "Web 1", Address = "http://www.mobi.com" };
+
+    //        Console.WriteLine($"Website Name: {websites[0].Name}");
+    //        Console.WriteLine($"Website Address: {websites[0].Address}");
+    //    }
+    //}
+
+    //----------------------indexer example 2----------------
+
+
+    //public class Employee
+    //{
+    //    public string Name { get; set; }
+    //    public string Email { get; set; }
+    //    public decimal BasePay { get; set; }
+    //    public int Age { get; set; }
+    //}
+
+    //public class Employees
+    //{
+    //    private Employee[] data = new Employee[10]; 
+
+
+    //    public Employee this[int index]
+    //    {
+    //        get { return data[index]; }
+    //        set { data[index] = value; }
+    //    }
+
+
+    //    public Employee GetEmployeeWithHighestSalary()
+    //    {
+    //        Employee highestPaid = data[0];
+
+    //        foreach (var employee in data)
+    //        {
+    //            if (employee != null && employee.BasePay > highestPaid.BasePay)
+    //            {
+    //                highestPaid = employee;
+    //            }
+    //        }
+
+    //        return highestPaid;
+    //    }
+
+
+    //    public decimal Get12MonthSalary(int index)
+    //    {
+    //        return data[index].BasePay * 12;
+    //    }
+
+
+    //    public Employee GetYoungestEmployee()
+    //    {
+    //        Employee youngest = data[0];
+
+    //        foreach (var employee in data)
+    //        {
+    //            if (employee != null && employee.Age < youngest.Age)
+    //            {
+    //                youngest = employee;
+    //            }
+    //        }
+
+    //        return youngest;
+    //    }
+
+
+    //    public int GetNumberOfEmployeesByAge(int age)
+    //    {
+    //        int count = 0;
+
+    //        foreach (var employee in data)
+    //        {
+    //            if (employee != null && employee.Age == age)
+    //            {
+    //                count++;
+    //            }
+    //        }
+
+    //        return count;
+    //    }
+    //}
+
+    //internal class Program
+    //{
+    //    public static void Main()
+    //    {
+    //        var employees = new Employees();
+
+    //        employees[0] = new Employee() { Name = "Alice", Email = "alice@example.com", BasePay = 50000, Age = 30 };
+    //        employees[1] = new Employee() { Name = "Bob", Email = "bob@example.com", BasePay = 60000, Age = 25 };
+    //        employees[2] = new Employee() { Name = "Charlie", Email = "charlie@example.com", BasePay = 55000, Age = 35 };
+
+    //        Employee highestPaid = employees.GetEmployeeWithHighestSalary();
+    //        Console.WriteLine($"Highest Paid Employee: {highestPaid.Name}, Salary: {highestPaid.BasePay}");
+
+    //        // Get the 12-month salary of the first employee
+    //        decimal annualSalary = employees.Get12MonthSalary(0);
+    //        Console.WriteLine($"12-Month Salary of {employees[0].Name}: {annualSalary}");
+
+    //        // Get the youngest employee
+    //        Employee youngest = employees.GetYoungestEmployee();
+    //        Console.WriteLine($"Youngest Employee: {youngest.Name}, Age: {youngest.Age}");
+
+    //        // Get the number of employees by a given age
+    //        int numberOfEmployeesByAge = employees.GetNumberOfEmployeesByAge(25);
+    //        Console.WriteLine($"Number of Employees aged 25: {numberOfEmployeesByAge}");
+    //    }
+    //}
+
+
+    //--------------------------------delegate-------------------
+
+    //public delegate void Operation(int n1, int n2);
+
+    //internal class Program
+    //{
+
+    //    public static void Add(int a, int b)
+    //    {
+    //        Console.WriteLine(a + b);
+    //    }
+
+
+    //    public static void Sub(int a, int b)
+    //    {
+    //        Console.WriteLine(a - b);
+    //    }
+
+
+    //    public static void Mul(int a, int b)
+    //    {
+    //        Console.WriteLine(a * b);
+    //    }
+
+
+    //    public static void Main()
+    //    {
+
+    //        Operation op = Add;
+    //        op += Sub;
+    //        op += Sub;
+
+    //        op(10, 5);
+
+
+    //    }
+    //}
+    //public delegate void Operation();
+
+    //internal class Program
+    //{
+
+
+    //    public static void DoThis()
+    //    {
+    //        Console.WriteLine("hello");
+    //    }
+
+    //    public static void settimer(int delay, Operation op)
+    //    {
+    //        Thread.Sleep(delay);
+    //        op();
+    //    }
+
+
+
+    //    public static void Main()
+    //    {
+
+    //        settimer(5000, DoThis);
+
+
+    //    }
+    //}
+    //public delegate void Operation();
+
+    //internal class Program
+    //{
+
+
+    //    public static void DoThis()
+    //    {
+    //        Console.WriteLine("hello");
+    //    }
+
+    //    public static void settimer(int delay, Action callback)
+    //    {
+    //        Thread.Sleep(delay);
+    //        callback();
+    //    }
+
+
+
+    //    public static void Main()
+    //    {
+
+    //        settimer(5000, DoThis);
+
+
+    //    }
+    //}
+
+    //public delegate bool NumberCheck(int number);
+
+    //internal class Program
+    //{
+    //    public static bool IsOdd(int number)
+    //    {
+    //        return number % 2 != 0;
+    //    }
+
+    //    public static bool IsEven(int number)
+    //    {
+    //        return number % 2 == 0;
+    //    }
+
+    //    public static void Check(int[] numbers, Predicate<int> condition)
+    //    {
+    //        foreach (var num in numbers)
+    //        {
+    //            if (condition(num))
+    //            {
+    //                Console.WriteLine(num);
+    //            }
+    //        }
+    //    }
+
+    //    public static void Main()
+    //    {
+    //        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    //        Console.WriteLine("Choose the type of check: \n1. Odd\n2. Even");
+    //        int choice = int.Parse(Console.ReadLine());
+
+    //        if (choice == 1)
+    //        {
+    //            Console.WriteLine("Odd numbers:");
+    //            Check(numbers, IsOdd);
+    //        }
+    //        else if (choice == 2)
+    //        {
+    //            Console.WriteLine("Even numbers:");
+    //            Check(numbers, IsEven);
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Invalid choice.");
+    //        }
+    //    }
+    //}
+
+    internal class Program
+    {
+        public static int Age(DateTime dob)
+        {
+            int age = DateTime.Now.Year - dob.Year;
+            return age;
+        }
+
+        public static void Main()
+        {
+            Console.WriteLine("enter your dob ");
+            DateTime dob = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("enter your  amount");
+
+            double amount = double.Parse(Console.ReadLine());
+
+            int Ageofperson = Age(dob);
+
+            if (Ageofperson < 10)
+            {
+                double discount = amount * 0.50;
+                Console.WriteLine($"discount is {discount}");
+            }
+            else if (Ageofperson > 11 && Ageofperson < 18)
+            {
+                double discount = amount * 0.55;
+                Console.WriteLine($"discount is {discount}");
+            }
+            else if (Ageofperson > 19 && Ageofperson < 60)
+            {
+                double discount = amount;
+                Console.WriteLine($"discount is {discount}");
+            }
+            else
+            {
+                double discount = amount * 0.65;
+                Console.WriteLine($"discount is {discount}");
+            }
+
+        }
+
+        
+    }
+
+
+}
