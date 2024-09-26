@@ -1,0 +1,4 @@
+static class MyConfig
+{
+    public static frmHomePage frmHome = null;
+}
